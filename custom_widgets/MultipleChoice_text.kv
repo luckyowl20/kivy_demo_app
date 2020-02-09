@@ -1,0 +1,133 @@
+#: import utils custom_widgets.utils
+
+<MultipleChoiceT>:
+    id: main_layout
+    chapter:
+    page:
+    content:
+    orientation: 'vertical'
+    padding: (root.settings).get("padding", 1)
+    bottom_label: bottom_label
+
+    canvas:
+        Color:
+            rgba: (root.settings).get("canvas_color", [])
+        Rectangle:
+            pos: self.x + ((root.settings).get("canvas_padding", 1) / 2), self.y + ((root.settings).get("canvas_padding", 1) / 2)
+            size: self.width - (root.settings).get("canvas_padding", 1), self.height - (root.settings).get("canvas_padding", 1)
+
+    Label:
+        id: question_label
+        font_size: (root.settings).get("font_size", 1)
+        text: 'Sample question'
+        text_size: self.size[0] + 5, self.size[1]
+        valign: 'middle'
+        height: self.font_size * 1.33
+        size_hint: 1, None
+        color: (root.settings).get("label_text_color", [])
+
+    Label:
+        size_hint_y: None
+        height: 10
+
+    ToggleButton:
+        id: btn1
+        background_color: (root.settings).get("button_bg_color", [])
+        color: (root.settings).get("button_text_color", [])
+        font_size: (root.settings).get("font_size", 1)
+        text: 'Option1'
+        group: 'MultChoice'
+        on_state: root.pressed(self)
+        size: utils.get_dimension(self, (root.settings).get("btn_scalar", 1))
+        size_hint: None, None
+        halign: 'center'
+        valign: 'center'
+
+    Label:
+        size_hint_y: 0.1
+
+    ToggleButton:
+        id: btn2
+        background_color: (root.settings).get("button_bg_color", [])
+        color: (root.settings).get("button_text_color", [])
+        font_size: (root.settings).get("font_size", 1)
+        text: '4785839409fjvojrvn eijofgj4389'
+        group: 'MultChoice'
+        on_state: root.pressed(self)
+        size: utils.get_dimension(self, (root.settings).get("btn_scalar", 1))
+        size_hint: None, None
+        halign: 'center'
+        valign: 'center'
+
+    Label:
+        size_hint_y: 0.1
+
+    ToggleButton:
+        id: btn3
+        background_color: (root.settings).get("button_bg_color", [])
+        color: (root.settings).get("button_text_color", [])
+        font_size: (root.settings).get("font_size", 1)
+        text: 'Option3'
+        group: 'MultChoice'
+        on_state: root.pressed(self)
+        size: utils.get_dimension(self, (root.settings).get("btn_scalar", 1))
+        size_hint: None, None
+        halign: 'center'
+        valign: 'center'
+
+    Label:
+        size_hint_y: 0.1
+
+    ToggleButton:
+        id: btn4
+        background_color: (root.settings).get("button_bg_color", [])
+        font_size: (root.settings).get("font_size", 1)
+        color: (root.settings).get("button_text_color", [])
+        text: 'A sample question type'
+        group: 'MultChoice'
+        on_state: root.pressed(self)
+        size: utils.get_dimension(self, (root.settings).get("btn_scalar", 1))
+        size_hint: None, None
+        halign: 'center'
+        valign: 'center'
+
+    Label:
+        size_hint: 1, 0.5
+
+    GridLayout:
+        id: bottom_layout
+        cols: 4
+
+        size_hint_y: None
+
+        Button:
+            id: submit_btn
+            text: 'Press to submit'
+            on_press: root.submit()
+            font_size: (root.settings).get("font_size", 1)
+            background_color: (root.settings).get("second_btn_bg_color", [])
+            color: (root.settings).get("second_btn_txt_color", [])
+
+            # for text wrapping
+            size: utils.get_dimension(self, (root.settings).get("btn_scalar", 1))
+            text_size: self.size
+            halign: 'center'
+            valign: 'center'
+
+        Label:
+            id: bottom_label
+            text: 'answer'
+            font_size: (root.settings).get("font_size", 1)
+            color: (root.settings).get("second_lbl_txt_color", [])
+            text_size: self.size
+
+            # for text wrapping
+            halign: 'center'
+            valign: 'center'
+            size: utils.get_dimension(self, (root.settings).get("btn_scalar", 1))
+            size_hint_x: main_layout.size_hint_x * 2
+
+<Test>:
+    orientation: 'vertical'
+    MultipleChoiceT:
+    MultipleChoiceT:

@@ -1,0 +1,27 @@
+{
+  "chapter1": [{
+    "page1": [{
+      "title": "Chapter 1, Page 1",
+      "subtitle": "What is digital logic?",
+      "content": "C:\\Users\\Matthew\\PycharmProjects\\scratches\\custom_widgets\\ch1pg1.txt",
+      "image_widget": [{
+        "img_source": "mazda_test_img2.jpg",
+        "caption": "a painted image of a mazda"
+      }]
+    }],
+    "page2": [{
+      "title": "Chapter 1 quiz",
+      "subtitle": "subtitle 2",
+      "content": "C:\\Users\\Matthew\\PycharmProjects\\scratches\\custom_widgets\\ch1pg2.txt",
+      "quiz": [{
+        "type": 1,
+        "question": "what_is_2",
+        "option1": "the answer is 1",
+        "option2": "3",
+        "option3": "4 obviously",
+        "option4": "ferrari",
+        "correct": "option3"
+      }]
+    }]
+  }]
+}

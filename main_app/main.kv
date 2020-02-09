@@ -1,0 +1,71 @@
+#: import utils custom_widgets.utils
+#: set settings_CD utils.get_settings(utils.settings_path, "ContentDisplay")
+#: set settings_MCT utils.get_settings(utils.settings_path, "MultipleChoiceT")
+
+WindowManager:
+    Window1:
+    Window2:
+    Window3:
+
+<Window1>:
+    name: "win1"
+    BoxLayout:
+        orientation: 'vertical'
+
+        ContentDisplay:
+            id: ch1pg1_CD
+            settings: settings_CD
+            chapter: "chapter1"
+            page: "page1"
+            content: utils.get_c_content(utils.content_path, self.chapter, self.page, "content")
+
+        Button:
+            text: "Next"
+            on_release: app.root.current = "win2"
+
+
+<Window2>:
+    name: "win2"
+    GridLayout:
+        cols: 2
+        rows: 2
+
+        ContentDisplay:
+            id: ch1pg2_CD
+            settings: settings_CD
+            chapter: "chapter1"
+            page: "page2"
+            content: utils.get_c_content(utils.content_path, self.chapter, self.page, "content")
+
+        MultipleChoiceT:
+
+        Button:
+            text: "Back"
+            on_release: app.root.current = "win1"
+
+        Button:
+            text: "Next"
+            on_release: app.root.current = "win3"
+
+<Window3>:
+    name: "win3"
+    GridLayout:
+        cols: 2
+        rows: 2
+
+        ContentDisplay:
+            id: ch1pg3_CD
+            settings: settings_CD
+            chapter: "chapter1"
+            page: "page1"
+            content: utils.get_c_content(utils.content_path, self.chapter, self.page, "content")
+
+        # MultipleChoiceI:
+            # id: ch1pg3_MCI
+
+        Label:
+
+
+        Button:
+            text: "back"
+            on_release: app.root.current = "win2"

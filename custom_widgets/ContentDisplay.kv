@@ -1,0 +1,104 @@
+#: import utils custom_widgets.utils
+
+<ContentDisplay>:
+    id: main_layout
+    chapter:
+    page:
+    content:
+    orientation: 'vertical'
+    padding: (root.settings).get("padding", 1)
+
+    canvas:
+        Color:
+            rgba: (root.settings).get("canvas_color", "")
+        Rectangle:
+            pos: self.x + ((root.settings).get("canvas_padding", 1) / 2), self.y + ((root.settings).get("canvas_padding", 0) / 2)
+            size: self.width - (root.settings).get("canvas_padding", 1), self.height - (root.settings).get("canvas_padding", 1)
+
+    Label:
+        canvas.before:
+            Color:
+                rgba: (root.settings).get("title_canvas_color", [])
+            Rectangle:
+                pos: self.x - (root.settings).get("canvas_padding", 1) / 2, self.y
+                size: self.width + (root.settings).get("canvas_padding", 1), self.height
+
+        id: title
+        font_size: (root.settings).get("title_font_size", 1)
+        text: (root.content).get("title", "")
+        text_size: self.size[0] + 5, self.size[1]
+        valign: 'middle'
+        height: self.font_size * 1.33
+        size_hint: 1, None
+
+    Label:
+        canvas.before:
+            Color:
+                rgba: (root.settings).get("subtitle_canvas_color", [])
+            Rectangle
+                pos: self.x - (root.settings).get("canvas_padding", 1) / 2, self.y
+                size: self.width + (root.settings).get("canvas_padding", 1), self.height
+
+        id: subtitle
+        font_size: (root.settings).get("subtitle_font_size", 1)
+        text: (root.content).get("subtitle", "")
+        text_size: self.size[0] + 5, self.size[1]
+        valign: 'middle'
+        height: self.font_size * 1.33
+        size_hint: 1, None
+
+    Label:
+        size_hint: 1, None
+        height: 5
+
+    Label:
+        canvas:
+            Color:
+                rgba: 0.2, 0.2, 0.2, 0.8
+            Rectangle
+                pos: self.x - (root.settings).get("canvas_padding", 1) / 2, self.y
+                size: self.width + (root.settings).get("canvas_padding", 1), self.height
+
+        size_hint: 1, None
+        height: 5
+
+    Label:
+        size_hint: 1, None
+        height: 5
+
+    BoxLayout:
+        orientation: 'vertical'
+        id: bottom_grid
+        Label:
+            id: content
+            font_size: (root.settings).get("font_size", 1)
+            text: (root.content).get("content", "")
+            text_size: self.size[0] + 5, self.size[1]
+            valign: 'top'
+            halign: 'left'
+            height: self.font_size * 1.33
+            size_hint: 1, 1
+
+        Button:
+            id: note
+            font_size: (root.settings).get("font_size", 1)
+            text: "Note"
+            text_size: self.size[0] + 5, self.size[1]
+            valign: 'center'
+            halign: 'center'
+            size: utils.get_dimension(self, (root.settings).get("btn_scalar", 1))
+            size_hint: None, None
+
+<Test>:
+    orientation: 'vertical'
+    ContentDisplay:
+        id: ch1-pg1
+        chapter: "chapter1"
+        page: "page1"
+        content: utils.get_c_content(utils.content_path, self.chapter, self.page)
+
+    ContentDisplay:
+        id: ch1-pg2
+        chapter: "chapter1"
+        page: "page2"
+        content: utils.get_c_content(utils.content_path, self.chapter, self.page)
